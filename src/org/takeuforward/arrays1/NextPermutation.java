@@ -67,6 +67,35 @@ public class NextPermutation {
 
         // TODO: optimized solution
         public void nextPermutation(int[] nums) {
+            // Step 1: Longer prefix match (nums[i]>nums[i-1])
+            // Step 2: Find greatest i but smaller eg smallest= Min.(arr[index+1],....upto.., arr[arr.length]]). So that you stay close to the current permutation
+              // Swap(nums[i], nums[smallest]
+            // Step 3: Place arr[index+1],..upto,..arr[arr.length-1] in a sorted order
+
+            int index = -1;
+            for (int i=nums.length-2; i>=0; i--) {
+                if (nums[i]<nums[i+1]) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index==-1) {
+                // Reverse nums
+                int start = 0, end = nums.length-1 ;
+                while(start < end)
+                {
+                    swap(nums, start++, end--);
+                }
+            } else {
+                for (int i=nums.length-1; i>index; i--) {
+                    if (nums[i]>nums[index]) {
+                        swap(nums, i, index);
+                        break;
+                    }
+                }
+                Arrays.sort(nums, index+1, nums.length);
+                System.out.print(Arrays.toString(nums));
+            }
         }
     }
 
@@ -75,7 +104,7 @@ public class NextPermutation {
         // int[] nums = {1,2,3}; // 1,3,2
         // int[] nums = {3,2,1}; // 1,2,3
         int[] nums = {1, 1, 5}; // 1,5,1
-        sl.nextPermutationBruteForce(nums); // Time Limit Exceeded
-        // sl.nextPermutation(nums);
+        // sl.nextPermutationBruteForce(nums); // Time Limit Exceeded O(N! * (N))
+        sl.nextPermutation(nums); // O(N)
     }
 }
