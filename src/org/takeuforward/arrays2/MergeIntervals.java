@@ -2,8 +2,8 @@ package org.takeuforward.arrays2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
+// https://leetcode.com/problems/merge-intervals/submissions/1159518395/
 public class MergeIntervals {
     static class Solution {
         public int[][] merge(int[][] intervals) {
