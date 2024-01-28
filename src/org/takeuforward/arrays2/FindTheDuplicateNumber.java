@@ -2,6 +2,7 @@ package org.takeuforward.arrays2;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/find-the-duplicate-number/
 public class FindTheDuplicateNumber {
     static class Solution {
         public int findDuplicate(int[] nums) {
