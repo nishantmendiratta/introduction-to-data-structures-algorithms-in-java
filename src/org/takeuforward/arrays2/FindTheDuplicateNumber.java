@@ -1,11 +1,20 @@
 package org.takeuforward.arrays2;
 
-import java.util.Arrays;
+import java.util.*;
 
 // https://leetcode.com/problems/find-the-duplicate-number/
 public class FindTheDuplicateNumber {
     static class Solution {
         public int findDuplicate(int[] nums) {
+            Set<Integer> seen = new HashSet<>();
+            for(int num: nums) {
+                if (seen.contains(num))
+                    return num;
+                seen.add(num);
+            }
+            return -1;
+        }
+        public int findDuplicateBruteForce(int[] nums) {
             Arrays.sort(nums);
             int result = -1;
             for (int i=0; i<nums.length; i++) {
